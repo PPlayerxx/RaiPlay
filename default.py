@@ -234,7 +234,7 @@ def show_home():
             for item2 in item["contents"]:
                 sub_type = item2["type"]
                 liStyle = xbmcgui.ListItem("%s: %s" % (Addon.getLocalizedString(32013), item2['name']))
-                liStyle.setThumbnailImage({"thumb": raiplay.getThumbnailUrl(item2["images"]["landscape"])})
+                liStyle.setThumbnailImage(raiplay.getThumbnailUrl(item2["images"]["landscape"]))
 
                 if sub_type == "RaiPlay Diretta Item":
                     liStyle.setInfo("video", {})
@@ -294,9 +294,8 @@ def show_slider_items(subItems):
     subItems= json.loads(subItems)
     for item in subItems:
         liStyle = xbmcgui.ListItem(item.get("name",""))
-        liStyle.setThumbnailImage({"thumb": item["icon"]})
+        liStyle.setThumbnailImage(item["icon"])
         if item.get("sub_type","") == "RaiPlay Video Item":
-            liStyle.setInfo("video", {})
             addLinkItem({"mode": "play", "url": item["video_url"]}, liStyle)
         else:
             addDirectoryItem({"mode": "ondemand", "path_id": item["path_id"], "sub_type": item["sub_type"]}, liStyle)
@@ -549,7 +548,7 @@ def show_ondemand_programme(pathId):
         # it's a movie
         if "first_item_path" in programme: 
             liStyle = xbmcgui.ListItem(programme["program_info"]["name"])
-            liStyle.setThumbnailImage({"thumb": raiplay.getThumbnailUrl(programme["program_info"]["images"]["landscape"])})
+            liStyle.setThumbnailImage(raiplay.getThumbnailUrl(programme["program_info"]["images"]["landscape"]))
             liStyle.setInfo("video", {
                 "Plot": programme["program_info"]["description"],
                 "Cast": programme["program_info"]["actors"].split(", "),
@@ -696,7 +695,7 @@ def get_raisport_videos(params):
         #xbmc.log("Item %s" % r['title'])
         if r['mode'] == "raisport_video":
             liStyle = xbmcgui.ListItem(r['title'])
-            liStyle.setThumbnailImage({'thumb': r['icon']})
+            liStyle.setThumbnailImage(r['icon'])
             liStyle.setInfo("video", {'duration' : r['duration'], 'aired': r['aired'], 'plot' : r['desc']})
             addLinkItem({"mode": "play", "url": r["url"]}, liStyle)
         elif r['mode'] == "raisport_subitem":
@@ -805,4 +804,5 @@ elif mode == "raisport_subitem":
 else:
     log_country()
     show_root_menu()
+
 
