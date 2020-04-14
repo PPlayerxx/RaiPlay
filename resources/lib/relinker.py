@@ -3,17 +3,9 @@ import sys
 import urllib
 import resources.lib.utils as utils
 
-PY3 = sys.version_info.major >= 3
-
-if PY3:
-    import urllib.request as urllib2
-    import urllib.parse as urlparse
-    from urllib.parse import urlencode
-
-else:
-    import urllib2
-    import urlparse
-    from urllib import urlencode
+import urllib2
+import urlparse
+from urllib import urlencode
 
     
 class Relinker:

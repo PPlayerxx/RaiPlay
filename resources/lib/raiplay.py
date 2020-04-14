@@ -5,15 +5,8 @@ import re
 import xbmc
 import resources.lib.utils as utils
 
-PY3 = sys.version_info.major >= 3
-
-if PY3:
-    import urllib.request as urllib2
-    import html.parser as HTMLParser
-
-else:
-    import urllib2
-    import HTMLParser
+import urllib2
+import HTMLParser
 
 
 class RaiPlay:
