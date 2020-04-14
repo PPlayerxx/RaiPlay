@@ -5,22 +5,13 @@ import xbmc
 import xbmcgui
 import xbmcplugin
 import xbmcaddon
+
 import urllib
 import json
-
-PY3 = sys.version_info.major >= 3
-
-if PY3:
-    import urllib.request as urllib2
-    import html.parser as HTMLParser
-    import urllib.parse as urlparse
-    from urllib.parse import urlencode
-    
-else:
-    import urllib2
-    import HTMLParser
-    import urlparse
-    from urllib import urlencode
+import urllib2
+import HTMLParser
+import urlparse
+from urllib import urlencode
     
 import datetime
 
