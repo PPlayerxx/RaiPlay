@@ -108,7 +108,7 @@ def show_tgr_root():
     programmes = tgr.getProgrammes()
     for programme in programmes:
         liStyle = xbmcgui.ListItem(programme["title"])
-        liStyle.setThumbnailImage({"thumb": programme["image"]})
+        liStyle.setThumbnailImage(programme["image"])
         addDirectoryItem({"mode": "tgr",
             "behaviour": programme["behaviour"],
             "url": programme["url"]}, liStyle)
@@ -206,7 +206,7 @@ def show_tv_channels():
     xbmc.log(str(chList))
     for ch in chList:
         liStyle = xbmcgui.ListItem("[COLOR green]" + ch['title'] + "[/COLOR]")
-        liStyle.setThumbnailImage({"thumb": ch['icon']})
+        liStyle.setThumbnailImage(ch['icon'])
         liStyle.setInfo("video", {})
         addLinkItem({"mode": "play", "url": ch["url"]}, liStyle)
     
@@ -410,14 +410,14 @@ def show_replay_tv_epg(date, channelId):
             if not videoUrl:
                 # programme is not available
                 liStyle = xbmcgui.ListItem(" [I]" + title + "[/I]")
-                liStyle.setThumbnailImage({"thumb": icon})
+                liStyle.setThumbnailImage(icon)
                 liStyle.setInfo("video", {})
                 addLinkItem({"mode": "nop"}, liStyle)
             else:
                 videoUrl = videoUrl[0]
 
                 liStyle = xbmcgui.ListItem(title )
-                liStyle.setThumbnailImage({"thumb": icon})
+                liStyle.setThumbnailImage(icon)
                 liStyle.setInfo("video", {})
                 addLinkItem({"mode": "play", "path_id": videoUrl}, liStyle)
     xbmcplugin.endOfDirectory(handle=handle, succeeded=True)
@@ -804,5 +804,4 @@ elif mode == "raisport_subitem":
 else:
     log_country()
     show_root_menu()
-
 
