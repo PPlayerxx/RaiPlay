@@ -1,2 +1,4 @@
+[B]0.2.0[/B]
+Fixes to all the thumbs, now all other them can be (hopefully) retrieved, with this all the menus are now working (it's the second time I say that, I know)
 [B]0.1.0[/B]
 New versioning, now can retrive thumbs from the net, disabled artworks (use too much memory), radio replay now works, same for short programs (on the On Demand section), all the menues should work now. (with upgraded ram/cpu i think you can watch every on demand program, need testing)
