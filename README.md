@@ -1,25 +1,12 @@
-Porting del plugin KODI ufficiale di RAI Play su xbmc4xbox
-
-
-
-•Working list:
-
-Radio Replay
-
-Programmi On demand (se molto lunghi finisce la memoria a disposizione)
-
-Archivio telegiornali 
-
-Funzione di ricerca programmi
-
-Vista home page sito
+Porting of the Kodi plugin to xbmc4xbox
 
 
 
 •To do list:
 
-Diretta radio (out of memory)
+Live radio (out of memory, works if you first download and run the m3u8 file )
 
-Diretta TV (out of memory)
+Live TV (out of memory, need to understand how it works)
 
-Ridurre tempi di caricamento
+Fix some on demand programs not playing (the m3u8 file works, but on the Xbox it searches for a different link, need to look at it)
+
