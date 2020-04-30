@@ -1,3 +1,5 @@
+[B]0.3.0[/B]
+Removed script.common.plugin.cache, now the plugin runs a lot faster (from 20/25 seconds to 3 seconds between menues)
 [B]0.2.0[/B]
 Fixes to all the thumbs, now all other them can be (hopefully) retrieved, with this all the menus are now working (it's the second time I say that, I know)
 [B]0.1.0[/B]
