@@ -15,8 +15,6 @@ from urllib import urlencode
     
 import datetime
 
-#import StorageServer
-
 from resources.lib.tgr import TGR
 from resources.lib.search import Search
 from resources.lib.raiplay import RaiPlay
@@ -30,15 +28,15 @@ __plugin__ = "plugin.video.raitv"
 __author__ = "Nightflyer"
 
 Addon = xbmcaddon.Addon(id=__plugin__)
+tv_stations = RaiPlay(Addon).getChannels
+radio_stations = RaiPlayRadio().getChannels
+raisport_keys = RaiPlay(Addon).fillRaiSportKeys
 
 # plugin handle
 handle = int(sys.argv[1])
 
-# Cache channels for 1 hour
-#cache = StorageServer.StorageServer("plugin.video.raitv", 1) # (Your plugin name, Cache time in hours)
-tv_stations = RaiPlay(Addon).getChannels
-radio_stations = RaiPlayRadio().getChannels
-raisport_keys = RaiPlay(Addon).fillRaiSportKeys
+
+
 
 # utility functions
 def parameters_string_to_dict(parameters):
