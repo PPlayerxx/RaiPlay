@@ -15,7 +15,7 @@ from urllib import urlencode
     
 import datetime
 
-import StorageServer
+#import StorageServer
 
 from resources.lib.tgr import TGR
 from resources.lib.search import Search
@@ -35,10 +35,10 @@ Addon = xbmcaddon.Addon(id=__plugin__)
 handle = int(sys.argv[1])
 
 # Cache channels for 1 hour
-cache = StorageServer.StorageServer("plugin.video.raitv", 1) # (Your plugin name, Cache time in hours)
-tv_stations = cache.cacheFunction(RaiPlay(Addon).getChannels)
-radio_stations = cache.cacheFunction(RaiPlayRadio().getChannels)
-raisport_keys = cache.cacheFunction(RaiPlay(Addon).fillRaiSportKeys)
+#cache = StorageServer.StorageServer("plugin.video.raitv", 1) # (Your plugin name, Cache time in hours)
+tv_stations = RaiPlay(Addon).getChannels
+radio_stations = RaiPlayRadio().getChannels
+raisport_keys = RaiPlay(Addon).fillRaiSportKeys
 
 # utility functions
 def parameters_string_to_dict(parameters):
@@ -326,7 +326,7 @@ def show_replay_dates(media):
     
 def show_replay_tv_channels(date):
     raiplay = RaiPlay(Addon)
-    for station in tv_stations:
+    for station in tv_stations():
         liStyle = xbmcgui.ListItem(station["channel"])
         liStyle.setThumbnailImage(raiplay.getThumbnailUrl(station["transparent-icon"]))
         addDirectoryItem({"mode": "replay",
@@ -337,7 +337,7 @@ def show_replay_tv_channels(date):
     xbmcplugin.endOfDirectory(handle=handle, succeeded=True)
     
 def show_replay_radio_channels(date):
-    for station in radio_stations:
+    for station in radio_stations():
         liStyle = xbmcgui.ListItem(station["channel"])
         liStyle.setThumbnailImage( station["stillFrame"])
         addDirectoryItem({"mode": "replay",
@@ -656,7 +656,7 @@ def get_raisport_main():
     xbmc.log("Build Rai Sport menu with search keys....")
     raiplay = RaiPlay(Addon)
     
-    for k in raisport_keys:
+    for k in raisport_keys():
         liStyle = xbmcgui.ListItem(k['title'])
         addDirectoryItem({"mode": "raisport_item", 'dominio': k['dominio'], 'sub_keys': k['sub_keys']}, liStyle)
 
